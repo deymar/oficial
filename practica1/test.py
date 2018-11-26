@@ -7,7 +7,7 @@ from sistema.models import Credito, Debito, PagoServicio, Servicio, UserProfile,
 
 class ServicioTest(TestCase):
     def setUp(self):
-        User.objects.create(password="1234", username="prueba", email="prueba@gmail.com")
+        User.objects.create(password="12345", username="prueba", email="prueba@gmail.com")
         usuario = User.objects.get(username = "prueba")
         Transferencia.objects.create(user_cuenta = "usuario1", user_cuenta2 = "usuario2", monto = '25.00')
         UserProfile.objects.create(correo="hoa@gmail.com", nombre="hola", user = usuario)
@@ -27,7 +27,7 @@ class ServicioTest(TestCase):
 
     def test_user(self):
         usuario = User.objects.get(username = "prueba")
-        self.assertEqual(usuario.password, "1234")
+        self.assertNotEqual(usuario.password, "1234")
 
     def test_servicio(self):
         pago = PagoServicio.objects.get(cuenta_servicio = "cuenta")
